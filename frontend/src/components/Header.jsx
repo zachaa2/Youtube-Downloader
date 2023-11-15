@@ -3,6 +3,8 @@ import Logo from '../assets/icon.png'
 
 function Header() {
 
+
+
   return (
 		<header style={{
 			display: 'flex',
@@ -19,6 +21,7 @@ function Header() {
 		</header>
   );
 
+
 }
 
-export default Header
+export default Header;
