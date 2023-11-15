@@ -1,31 +1,35 @@
-import { useState, useEffect } from 'react'
-
+import React, { useState } from 'react'
+import Header from './components/Header'
 
 function App() {
 
-  const [data, setData] = useState([{}]);
+  const [youtubeUrl, setyoutubeUrl] = useState('');
 
-  useEffect(() => {
-    fetch("/api/members").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-        console.log(data)
-      }
-    )
-  }, [])
-  
+  const handleInputChange = (e) => {
+    setyoutubeUrl(e.target.value);
+  }
+
+  const handleDownload = () => {
+    if(!youtubeUrl){
+      alert("Please enter a youtube url");
+    }
+    // TODO: Make request to backend to handle download
+    console.log('Downloading video: ' + youtubeUrl);
+  }
+
   return (
     <>
-      <div>
-        {(typeof data.members === 'undefined') ? (
-          <p>Loading...</p>
-        ) : (
-          data.members.map((member, i) => (
-            <p key={i}>{member}</p>
-          ))
-        )}
+      <Header />
+      <div className='app'>
+        <input 
+          type='text'
+          value={youtubeUrl}
+          onChange={handleInputChange}
+          placeholder='Enter Youtube URL here'
+        />
+        <button onClick={handleDownload}> 
+          Download
+        </button>
       </div>
     </>
   )
