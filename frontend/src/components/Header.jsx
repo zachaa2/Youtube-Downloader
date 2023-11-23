@@ -3,24 +3,29 @@ import Logo from '../assets/icon.png'
 
 function Header() {
 
+	const headerStyle = {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: '100%',
+	}
 
+	const siteIconStyle = {
+		width: 'auto',
+		height: '50px',
+	}
+
+	const siteTitleStyle = { 
+		height: '50px', 
+	}
 
   return (
-		<header style={{
-			display: 'flex',
-			flexDirection: 'row',
-			justifyContent: 'center',
-			alignItems: 'center',
-			width: '100%',
-		}}>
-		  <img src={Logo} alt="Logo" style={{
-				width: 'auto',
-				height: '50px',
-			}} />
-		  <h1 style={{ height: '50px', }}>YouTube Video Downloader</h1>
+		<header style={headerStyle}>
+		  <img src={Logo} alt="Logo" style={siteIconStyle} />
+		  <h1 style={siteTitleStyle}>YouTube Video Downloader</h1>
 		</header>
   );
-
 
 }
 
