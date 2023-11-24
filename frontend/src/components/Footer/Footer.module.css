@@ -1,0 +1,24 @@
+.footerStyle {
+    bottom:0;
+    width:100%;
+};
+
+.footerContentStyle{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+};
+
+.iconContainerStyle { 
+    display: flex; 
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+};
+
+.iconStyle {
+    color: #007bff;
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+};

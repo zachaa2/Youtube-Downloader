@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.iconStyle {
+    width: auto;
+    height: 50px;
+}
+
+.titleStyle {
+    height: 50px;
+}

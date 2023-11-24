@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './Tool.module.css';
 
 function Tool() {
   
@@ -17,14 +18,15 @@ function Tool() {
   }  
 
   return (
-    <div >
+    <div className={styles.toolDivStyle} >
       <input 
         type='text'
         value={youtubeUrl}
         onChange={handleInputChange}
         placeholder='Enter Youtube URL here'
+        className={styles.inputStyle}
       />
-      <button onClick={handleDownload}> 
+      <button onClick={handleDownload} className={styles.downloadButtonStyle}> 
         Download
       </button>
     </div>
