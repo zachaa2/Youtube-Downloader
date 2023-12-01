@@ -1,24 +1,21 @@
 .footerStyle {
     bottom:0;
-    width:100%;
-};
-
-.footerContentStyle{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-};
-
-.iconContainerStyle { 
-    display: flex; 
-    flex-direction: row;
-    align-content: center;
+    width: 100%;
+    display: flex;
+    justify-content: left;
     align-items: center;
 };
 
+.copyrightStyle {
+    width: auto;
+    font-size: 24px;
+}
+
 .iconStyle {
     color: #007bff;
-    margin: 0 10px;
-    font-size: 24px;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
     text-decoration: none;
+    align-items: center;
 };
