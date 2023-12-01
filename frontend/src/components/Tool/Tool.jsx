@@ -9,12 +9,20 @@ function Tool() {
     setyoutubeUrl(e.target.value);
   }
 
+  const isValidYoutubeUrl = (url) => {
+    const regex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+    return regex.test(url);
+  }
+
   const handleDownload = () => {
     if(!youtubeUrl){
       alert("Please enter a youtube url");
+    } else if (!isValidYoutubeUrl(youtubeUrl)){
+      alert("Please enter a valid youtube url");
+    } else {
+      // TODO: Make request to backend to handle download
+      console.log('Downloading video: ' + youtubeUrl);
     }
-    // TODO: Make request to backend to handle download
-    console.log('Downloading video: ' + youtubeUrl);
   }  
 
   return (
