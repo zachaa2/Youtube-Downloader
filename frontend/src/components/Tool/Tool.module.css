@@ -1,14 +1,15 @@
 .toolDivStyle {
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-};
+  justify-content: center;
+  gap: 2%;
+}
 
 .inputStyle {
-  width: 40%;
-};
+  width: 33%;
+}
 
 .downloadButtonStyle {
-  width: 20%;
-};
+  width: 16%;
+}

@@ -9,6 +9,10 @@ function Tool() {
     setyoutubeUrl(e.target.value);
   }
 
+  const handleInputFocus = (e) => {
+    e.currentTarget.select();
+  }
+
   const isValidYoutubeUrl = (url) => {
     const regex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
     return regex.test(url);
@@ -65,6 +69,7 @@ function Tool() {
         type='text'
         value={youtubeUrl}
         onChange={handleInputChange}
+        onFocus={handleInputFocus}
         placeholder='Enter Youtube URL here'
         className={styles.inputStyle}
       />
