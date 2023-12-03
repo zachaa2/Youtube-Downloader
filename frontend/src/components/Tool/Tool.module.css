@@ -1,9 +1,18 @@
+.parentDiv {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  align-items: center;
+}
+
 .toolDivStyle {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2%;
+  flex-direction: row;
 }
 
 .inputStyle {

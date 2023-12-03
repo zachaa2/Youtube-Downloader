@@ -5,12 +5,15 @@ function Tool() {
   
   const [youtubeUrl, setyoutubeUrl] = useState('');
 
+  const [downloadStatus, setDownloadStatus] = useState('Ready to download');
+
   const handleInputChange = (e) => {
     setyoutubeUrl(e.target.value);
   }
 
   const handleInputFocus = (e) => {
     e.currentTarget.select();
+    setDownloadStatus("Ready to download")
   }
 
   const isValidYoutubeUrl = (url) => {
@@ -24,6 +27,9 @@ function Tool() {
     } else if (!isValidYoutubeUrl(youtubeUrl)){
       alert("Please enter a valid youtube url");
     } else {
+      setDownloadStatus('Downloading...');
+      console.log('Downloading video: ' + youtubeUrl);
+
       try {
         const response = await fetch('http://localhost:5000/download', {
           method: 'POST',
@@ -43,6 +49,7 @@ function Tool() {
           link.click();
           document.body.removeChild(link);
           URL.revokeObjectURL(url);
+          setDownloadStatus("Video has Been Downloaded!");
           // clear temp folder
           const clearResponse = await fetch('http://localhost:5000/clear-temp', {
             method: "POST",
@@ -59,24 +66,29 @@ function Tool() {
         alert("An error occured while downloading the video")
       }
 
-      console.log('Downloading video: ' + youtubeUrl);
     }
   }  
 
   return (
-    <div className={styles.toolDivStyle} >
-      <input 
-        type='text'
-        value={youtubeUrl}
-        onChange={handleInputChange}
-        onFocus={handleInputFocus}
-        placeholder='Enter Youtube URL here'
-        className={styles.inputStyle}
-      />
-      <button onClick={handleDownload} className={styles.downloadButtonStyle}> 
-        Download
-      </button>
+    <div className={styles.parentDiv}>
+      <div className={styles.toolDivStyle} >
+        <input 
+          type='text'
+          value={youtubeUrl}
+          onChange={handleInputChange}
+          onFocus={handleInputFocus}
+          placeholder='Enter Youtube URL here'
+          className={styles.inputStyle}
+        />
+        <button onClick={handleDownload} className={styles.downloadButtonStyle}> 
+          Download
+        </button>
+      </div>
+      <p>
+        {downloadStatus}
+      </p>
     </div>
+
   )
 
 }
