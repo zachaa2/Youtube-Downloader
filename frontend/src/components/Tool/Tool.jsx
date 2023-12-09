@@ -7,6 +7,8 @@ function Tool() {
 
   const [downloadStatus, setDownloadStatus] = useState('Ready to download');
 
+  const [format, setFormat] = useState('mp4');
+
   const handleInputChange = (e) => {
     setyoutubeUrl(e.target.value);
   }
@@ -36,7 +38,7 @@ function Tool() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({url: youtubeUrl}),
+          body: JSON.stringify({url: youtubeUrl, format: format}),
         });
 
         if (response.ok){
@@ -80,6 +82,10 @@ function Tool() {
           placeholder='Enter Youtube URL here'
           className={styles.inputStyle}
         />
+        <select value={format} onChange={(e) => setFormat(e.target.value)} className={styles.dropdownStyle}>
+          <option value="mp4">MP4</option>
+          <option value="mp3">MP3</option>
+        </select>
         <button onClick={handleDownload} className={styles.downloadButtonStyle}> 
           Download
         </button>

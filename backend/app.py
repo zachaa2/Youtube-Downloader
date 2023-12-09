@@ -12,15 +12,26 @@ CORS(app)
 @app.route('/download', methods=['POST'])
 def download_video():
     youtube_url = request.json['url']
+    file_format = request.json['format']
 
     yt = YouTube(youtube_url)
-    vid = yt.streams.filter(progressive=True, file_extension='mp4').order_by("resolution").desc().first()
+
+    if file_format == 'mp4':
+        vid = yt.streams.filter(progressive=True, file_extension='mp4').order_by("resolution").desc().first()
+        filename = 'downloaded_video.mp4'
+    elif file_format == 'mp3':
+        vid = yt.streams.filter(only_audio=True).first()
+        filename = 'downloaded_video.mp3'
 
     if not os.path.exists('temp'):
         os.makedirs('temp')
     
-    vid.download(output_path='temp', filename='downloaded_video.mp4')
-    file_path = os.path.join('temp', 'downloaded_video.mp4')
+    vid.download(output_path='temp', filename=filename)
+    if file_format == 'mp4':
+        file_path = os.path.join('temp', 'downloaded_video.mp4')
+    elif file_format == 'mp3':
+        file_path = os.path.join('temp', 'downloaded_video.mp3')
+
     return send_file(file_path, as_attachment=True)
 
 @app.route('/clear-temp', methods=["POST"])
