@@ -32,6 +32,15 @@ html {
   flex-grow: 1;
 }
 
+.siteinfo-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  flex-direction: column;
+}
+
 .footer-container {
   justify-self: left;
 }

@@ -3,6 +3,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Tool from './components/Tool/Tool';
 import './App.css';
+import SiteInfo from './components/SiteInfo/SiteInfo';
 
 function App() {
   
@@ -14,6 +15,9 @@ function App() {
         </div>
         <div className='tool-container' >
           <Tool />
+        </div>
+        <div className='siteinfo-container'>
+          <SiteInfo />
         </div>
         <div className='footer-container' >
           <Footer />
